@@ -53,8 +53,8 @@ public class Main extends AbstractVerticle {
 
 
         // Publish a message to the address "news-feed" every second
-        vertx.setPeriodic(2000, t -> {
-            vertx.eventBus().publish("news-feed", "news from the server!");
-        });
+//        vertx.setPeriodic(2000, t -> {
+//            vertx.eventBus().publish("news-feed", "news from the server!");
+//        });
     }
 }

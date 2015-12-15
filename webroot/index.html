@@ -14,8 +14,15 @@
 
 <body>
 
-<div class="news">Latest news:</div>
+<div class="news">Stages</div>
 <br>
+<form action="">
+    <input id="CreateProject" type="checkbox" name="stages" value="Modeler">Create Project<br>
+    <input id="Invite" type="checkbox" name="stages" value="Invite">Invite Team Members<br>
+    <input id="PostMessage" type="checkbox" name="stages" value="Invite">Post Message<br>
+    <input id="CreateStory" type="checkbox" name="stages" value="Invite">Create Story<br>
+    <input id="Commit" type="checkbox" name="stages" value="Invite">Commit<br>
+</form>
 
 <div id="status" class="news"></div>
 
@@ -24,9 +31,23 @@
 
   eb.onopen = function () {
     eb.registerHandler("news-feed", function (err, msg) {
-      var str = "<code>" + msg.body + "</code><br>";
-      $('#status').prepend(str);
-    })
+      //var str = "<code>" + msg.body + "</code><br>";
+      //$('#status').prepend(str);
+      var object = JSON.parse(msg.body);
+      console.log(msg);
+
+      if (object.Payload.EventType === 'ProjectCreated') {
+        $('#CreateProject').prop('checked', true);
+      } else if (object.Payload.EventType === 'ProjectInviteSent') {
+        $('#Invite').prop('checked', true);
+      } else if (object.Payload.EventType === 'MessagePosted') {
+        $('#PostMessage').prop('checked', true);
+      } else if (object.Payload.EventType === 'StoryCreated') {
+        $('#CreateStory').prop('checked', true);
+      } else if (object.Payload.EventType === 'TeamserverCommit') {
+        $('#Commit').prop('checked', true);
+      }
+    });
   }
 
 </script>
