@@ -1,0 +1,33 @@
+<html>
+
+<head>
+  <title>Event Bus Consumer Example</title>
+  <script src="../node_modules/systemjs/dist/system.src.js"></script>
+  <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="//cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js"></script>
+  <script src="vertx-eventbus.js"></script>
+  <script>
+    System.config({
+        packages: {'app': {defaultExtension: 'js'}}
+      });
+      System.import('app/app');
+  </script>
+</head>
+
+<body>
+  <my-app>Loading...</my-app>
+  <!--<script>
+    var eb = new EventBus("http://localhost:8082/eventbus");
+
+  eb.onopen = function () {
+    eb.registerHandler("news-feed", function (err, msg) {
+      var str = "<code>" + msg.body + "</code><br>";
+      $('#status').prepend(str);
+    })
+  }
+
+  </script>-->
+</body>
+
+</html>

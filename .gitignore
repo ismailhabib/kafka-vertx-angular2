@@ -1,3 +1,5 @@
 .idea/
 target/
 *.iml
+*.map
+angular2-ui/node_modules/

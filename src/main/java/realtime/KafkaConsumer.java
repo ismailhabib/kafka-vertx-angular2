@@ -19,14 +19,14 @@ public class KafkaConsumer extends AbstractVerticle {
     public void start() throws Exception {
         Properties props = new Properties();
         props.put("bootstrap.servers", "ec2-54-165-8-35.compute-1.amazonaws.com:9092");
-        props.put("group.id", "test");
+        props.put("group.id", "VertxKafkaConsumer");
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
         props.put("session.timeout.ms", "30000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         consumer = new org.apache.kafka.clients.consumer.KafkaConsumer<String, String>(props);
-        consumer.subscribe(Arrays.asList("Event"));
+        consumer.subscribe(Arrays.asList("GuidanceEvents"));
         scheduleConsume();
     }
 
